@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "games-list.component.scss"
+    ],
+    "names": [],
+    "file": "games-list.component.css"
+}

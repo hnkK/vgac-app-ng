@@ -1,0 +1,97 @@
+<div class="bg-black bg-opacity-70 w-full mx-auto mb-10 rounded text-center">
+  <h1 id="heading" class="text-red-800 text-center text-4xl lg:text-5xl pt-10 uppercase">VGAC</h1>
+  <span id="heading2" class="text-white text-2xl lg:text-3xl uppercase inline-block pb-10"></span>
+</div>
+
+<div class="
+    flex
+    flex-col
+    justify-center
+    mx-auto
+    mt-10
+    mb-7">
+  <app-search-bar></app-search-bar>
+
+  <!--<div class="md:mr-3 pt-2">
+     <label class="text-white mr-3 bg-red-800 p-3 rounded uppercase">Les dernières sorties -></label>
+     <select name="sort-game"
+             [(ngModel)]="sort"
+             (change)="searchGames(sort)"
+             panelClass="sort-select"
+             aria-placeholder="Les dernières sorties"
+             class="text-black rounded p-3">
+       <option value="-released">Futures sorties</option>
+       <option value="-created">Fiches récemment crées</option>
+       <option value="-updated">Mis à jour</option>
+     </select>
+   </div>-->
+</div>
+
+
+
+<div class="
+    flex flex-col
+    relative
+    mb-20
+    md:w-10/12
+    md:flex-wrap md:flex-row
+    md:justify-center
+    md:mx-auto
+  ">
+  <div class="
+      w-80
+      h-96
+      mx-auto
+      relative
+      hover:cursor-pointer
+      my-5
+      border-2 border-gray-900
+      md:mx-5
+      hover
+    "
+       *ngFor="let game of games"
+       (click)="openGameDetails(game.id)">
+    <img src="{{
+        !game.background_image
+          ? './../../../assets/images/gamer.png'
+          : game.background_image
+      }}"
+         alt="{{game.name}}"
+         width="300"
+         height="300"
+         class="image" />
+    <div class="
+        bg-black bg-opacity-90
+        p-2
+        text-white text-md
+        absolute
+        bottom-0
+        left-0
+        w-full
+        h-24
+        flex flex-row
+      ">
+      <div class="w-3/4">
+        <span class="text-lg">
+          <strong>
+            <a href="jeu">
+              {{
+              game.name.length > 20
+                ? (game.name | slice: 0:20) + "..."
+                : game.name
+              }}
+            </a>
+          </strong>
+        </span>
+        <br />
+        <span class="text-xs -pt-5 inline-block">
+          <ul *ngFor="let genre of game.genres; let i = index">
+            <span *ngIf="i < 3">
+            <li>{{ genre.name }}</li>
+        </span>
+        </ul>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="flex w-full justify-center">
+  <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+    <input
+      type="search"
+      class="bg-purple-white shadow rounded border-0 p-3"
+      ngModel
+      placeholder="Chercher un titre"
+      name="search"
+      style="width: 360px;"
+    />
+    <button class="text-white bg-red-800 p-4 ml-2 text-sm uppercase rounded">Rechercher</button>
+  </form>
+</div>

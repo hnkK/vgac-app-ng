@@ -1,0 +1,11 @@
+<div class="bg-black p-5 text-white flex justify-between">
+  <h1 class="text-3xl ml-5"><a href=""><span class="text-red-800">VG</span>A</a>C</h1>
+  <i class="im im-menu text-3xl mr-5 cursor" (click)="displayMenu()"></i>
+</div>
+
+<app-navbar
+  *ngIf="isDisplayed === true"
+  [ngClass]="{ 'menu-transition-in': isDisplayed === true }"
+></app-navbar>
+
+

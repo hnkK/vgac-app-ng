@@ -1,0 +1,95 @@
+<div class="lg:flex lg:flex-row lg:w-full">
+  <div class="w-full h-96 mx-auto relative lg:w-3/4 cover-img lg:mx-0">
+    <img src="{{ game.background_image ? game.background_image : '../../../../assets/images/no-game-img-txt.jpg' }}"
+         alt="{{ game.name }}"
+         width="1920"
+         height="1080"
+         class="image" />
+    <div class="absolute top-1/2 w-96 bg-black bg-opacity-80 lg:hidden">
+      <h2 class="text-white text-5xl -mt-5 ml-5">{{ game.name }}</h2>
+      <span class="ml-5 text-lg text-red-500 inline-block pb-2">
+        Date de sortie: {{ game.released | date }}
+      </span>
+    </div>
+  </div>
+
+  <div class="
+      w-full
+      px-4
+      lg:w-1/4
+      bg-black bg-opacity-80
+      lg:flex lg:flex-col
+      lg:justify-center
+      lg:px-5
+    ">
+    <h2 class="text-white text-4xl hidden lg:block lg:mt-5 lg:ml-1">
+      {{ game.name }}
+    </h2>
+    <span class="text-lg text-white hidden lg:inline-block lg:pb-2 lg:ml-2">
+      Date de sortie:
+      <span class="text-red-500">{{ game.released | date }}</span>
+    </span>
+
+    <br />
+
+    <div class="p-2 w-full">
+
+      <span class="text-white inline-block my-2">
+        <span class="text-red-500">Editeurs:</span>
+        <span *ngFor="let publishers of game.publishers; let last = last">
+          {{ publishers.name  ? publishers.name : "Pas d'éditeur"}}<span *ngIf="!last">,</span>
+        </span>
+      </span>
+
+      <br />
+
+      <span class="text-white inline-block my-2">
+        <span class="text-red-500">Genre:</span>
+        <span *ngFor="let genre of game.genres; let last = last">
+          {{ genre.name }}<span *ngIf="!last">, </span>
+        </span>
+      </span>
+
+      <br />
+
+      <span class="text-white inline-block my-2">
+        <span class="text-red-500">Metacritic:</span>
+        <span [ngClass]="game.metacritic >= '70' ? 'text-green-400' : 'text-red-400'">&nbsp;{{ (game.metacritic) ? game.metacritic : 'Pas de note' }}</span>
+      </span>
+
+      <br />
+
+      <span class="text-white inline-block my-2">
+        <span class="text-red-500">Plateformes:</span>
+        <div *ngFor="let platform of game.parent_platforms">
+          <span class="text-white text-sm">{{ platform.name }}</span>
+        </div>
+      </span>
+
+      <br />
+
+    </div>
+  </div>
+</div>
+
+<div class="p-7 text-center">
+  <h2 class="text-white text-3xl lg:text-6xl">Visuels disponibles</h2>
+</div>
+
+
+<div class="w-full text-center flex flex-col md:flex-row mb-1 flex-wrap justify-center">
+  <div class="border-2 my-1 w-full md:w-1/4" *ngFor="let screenshot of game.screenshots">
+    <a href="{{ screenshot.image }}" target="_blank">
+      <img class="pointer" src="{{ screenshot.image }}" alt="{{ screenshot.id}}">
+    </a>
+  </div>
+</div>
+
+
+<div class="w-full flex flex-wrap justify-center">
+  <div class="lg:w-1/2 p-1" *ngFor="let trailer of game.trailers">
+    <video controls poster="{{trailer.preview }}">
+      <source src="{{ trailer.data.max }}" srcset="" type="video/mp4">
+    </video>
+  </div>
+</div>

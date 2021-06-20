@@ -1,0 +1,11 @@
+.cursor:hover {
+  cursor: pointer;
+}
+
+.menu-transition-in {
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+  -webkit-transform: translateX(100px);
+          transform: translateX(100px);
+}
+/*# sourceMappingURL=header.component.css.map */

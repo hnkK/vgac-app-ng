@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "https://api.igdb.com/v4/",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}
